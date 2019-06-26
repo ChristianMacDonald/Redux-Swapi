@@ -13,18 +13,18 @@ export const FAILURE = 'FAILURE';
 export const fetchCharacters = () => dispatch => {
     dispatch({ type: FETCHING });
     Axios.get('https://swapi.co/api/people')
-        .then(result => {
-            console.log(result);
+        .then(res => {
+            console.log(res);
             dispatch({
                 type: SUCCESS,
-                payload: result.data
+                payload: res.data.results
             });
         })
-        .catch(error => {
-            console.log(error);
+        .catch(err => {
+            console.log(err);
             dispatch({
                 type: FAILURE,
-                payload: error.data
+                payload: err.data
             });
         });
 }
